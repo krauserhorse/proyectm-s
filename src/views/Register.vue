@@ -3,6 +3,9 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>Registro</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/"></ion-back-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -75,9 +78,10 @@ import {
   IonGrid,
   IonInput,
   alertController,
+  IonBackButton,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
-// import frs from "@firebase/firestore";
+
 import {
   getFirestore,
   collection,
@@ -87,7 +91,7 @@ import {
   getDoc,
   QuerySnapshot,
 } from "firebase/firestore/lite";
-//import "@/dbFirebase/initFirebase";
+
 import router from "@/router";
 import app from "../dbfirebase/initFirebase";
 import sha256 from "js-sha256";
@@ -111,6 +115,7 @@ export default defineComponent({
     IonRow,
     IonGrid,
     IonInput,
+    IonBackButton,
   },
   data() {
     return {

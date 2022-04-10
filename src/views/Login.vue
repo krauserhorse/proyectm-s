@@ -3,6 +3,9 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>M-S</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/"></ion-back-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -21,6 +24,7 @@
               <ion-card-content>
                 <ion-list>
                   <ion-item>
+                    
                     <ion-label position="floating">NIT</ion-label>
                     <ion-input type="text" v-model="nit"></ion-input>
                   </ion-item>
@@ -46,6 +50,7 @@ import router from "@/router";
 import "@/dbfirebase/initFirebase";
 import app from "../dbfirebase/initFirebase";
 import { getFirestore, doc, getDoc } from "firebase/firestore/lite";
+import ProfilePage from "@/views/ProfilePage.vue";
 import {
   IonContent,
   IonHeader,
@@ -64,10 +69,13 @@ import {
   IonRow,
   IonGrid,
   IonInput,
+  IonBackButton,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import sha256 from "js-sha256";
 export default defineComponent({
+
+
   name: "LoginLinea",
   components: {
     IonContent,
@@ -87,12 +95,15 @@ export default defineComponent({
     IonRow,
     IonGrid,
     IonInput,
+    IonBackButton,
   },
   data() {
     return {
       nit: "",
       contraseña: "",
       passIncorrect: "",
+      sesion: "",
+      cookie: "",
     };
   },
   methods: {
@@ -109,20 +120,28 @@ export default defineComponent({
       if (docSnap.exists()) {
         const contraseña = docSnap.data();
         const comparar = sha256.sha256(this.contraseña);
-        console.log(comparar);
-        console.log(contraseña);
+
         if (comparar == contraseña.contaseña) {
-          router.push("/Pantalla");
+          //enviar nit a perfil.vue
+          this.sesion = this.nit;
+          router.push("/profile");
+
         } else {
           this.passIncorrect = "Harder daddy";
         }
+          document.cookie = this.nit;
       } else {
         this.passIncorrect = "Datos erroneos";
         console.log("No such document!");
       }
     },
+    //document do cookie
+    
+
+
   },
 });
+
 </script>
 <style scoped>
 </style>

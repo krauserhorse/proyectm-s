@@ -7,16 +7,26 @@
     </ion-header>
     
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">M-S</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <div id="container">
-        <strong>Ready to bitches?</strong>
-        <p></p>
-      </div>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            <ion-label>
+              <h2>Ready to bitches?</h2>
+            </ion-label>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-label>
+              <h2>
+                Sea bien-venido a la aplicacion de ranking empresarial.
+              </h2>
+            </ion-label>
+          </ion-list>
+          <ion-button expand="block" @click="registrar">Registrar</ion-button>
+          <ion-button expand="block" @click="login">Iniciar sesion</ion-button>
+        </ion-card-content>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
@@ -33,6 +43,14 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar
+  },
+  methods: {
+    registrar() {
+      this.$router.push('/register');
+    },
+    login() {
+      this.$router.push('/login');
+    }
   }
 });
 </script>
