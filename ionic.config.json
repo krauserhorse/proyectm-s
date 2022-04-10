@@ -1,0 +1,7 @@
+{
+  "name": "M&S",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
