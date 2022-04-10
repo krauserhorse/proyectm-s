@@ -1,0 +1,128 @@
+<template>
+  <ion-page>
+    <ion-header :translucent="true">
+      <ion-toolbar>
+        <ion-title>M-S</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content :fullscreen="true">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
+                  <ion-label>
+                    <h2>Iniciar sesion</h2>
+                  </ion-label>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item>
+                    <ion-label position="floating">NIT</ion-label>
+                    <ion-input type="text" v-model="nit"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Contraseña</ion-label>
+                    <ion-input type="password" v-model="contraseña"></ion-input>
+                  </ion-item>
+                </ion-list>
+                <ion-button expand="block" @click="login">Iniciar Sesion</ion-button>
+                <ion-button expand="block" @click="Register">Registrar</ion-button>
+              </ion-card-content>
+              {{ passIncorrect }}
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-page>
+</template>
+
+<script lang="ts">
+import router from "@/router";
+import "@/dbfirebase/initFirebase";
+import app from "../dbfirebase/initFirebase";
+import { getFirestore, doc, getDoc } from "firebase/firestore/lite";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonLabel,
+  IonCardTitle,
+  IonCardHeader,
+  IonItem,
+  IonList,
+  IonButton,
+  IonCardContent,
+  IonCard,
+  IonCol,
+  IonRow,
+  IonGrid,
+  IonInput,
+} from "@ionic/vue";
+import { defineComponent } from "vue";
+import sha256 from "js-sha256";
+export default defineComponent({
+  name: "LoginLinea",
+  components: {
+    IonContent,
+    IonHeader,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    IonLabel,
+    IonCardTitle,
+    IonCardHeader,
+    IonItem,
+    IonList,
+    IonButton,
+    IonCardContent,
+    IonCard,
+    IonCol,
+    IonRow,
+    IonGrid,
+    IonInput,
+  },
+  data() {
+    return {
+      nit: "",
+      contraseña: "",
+      passIncorrect: "",
+    };
+  },
+  methods: {
+    Register() {
+      router.push("/Register");
+    },
+    home() {
+      router.push("/Home");
+    },
+    async login() {
+      const db = getFirestore(app);
+      const docRef = doc(db, "usuarios", this.nit);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const contraseña = docSnap.data();
+        const comparar = sha256.sha256(this.contraseña);
+        console.log(comparar);
+        console.log(contraseña);
+        if (comparar == contraseña.contaseña) {
+          router.push("/Pantalla");
+        } else {
+          this.passIncorrect = "Harder daddy";
+        }
+      } else {
+        this.passIncorrect = "Datos erroneos";
+        console.log("No such document!");
+      }
+    },
+  },
+});
+</script>
+<style scoped>
+</style>
