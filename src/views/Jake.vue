@@ -16,7 +16,7 @@
             <ion-card>
               <ion-card-header>
                 <ion-card-title>
-                      <img src="../images/Jake.png">
+                      <img src="../images/jake-bacon.gif">
                 </ion-card-title>
               </ion-card-header>
               <ion-card-content>
