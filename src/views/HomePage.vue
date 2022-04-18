@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>M-S</ion-title>
+        <ion-title>M-S.</ion-title>
       </ion-toolbar>
     </ion-header>
     
@@ -11,7 +11,7 @@
         <ion-card-header>
           <ion-card-title>
             <ion-label>
-              <h2>Ready to bitches?</h2>
+              <h2>Bienvenido a la aplicación de registro de empresas de Ubaté.</h2>
             </ion-label>
           </ion-card-title>
         </ion-card-header>
@@ -19,7 +19,7 @@
           <ion-list>
             <ion-label>
               <h2>
-                Sea bien-venido a la aplicacion de ranking empresarial.
+                A continuacion inicie sesión, si es nuevo en nuestra plataforma tenga el gusto de registrarse, no le tomará mas de 3 minutos.
               </h2>
             </ion-label>
           </ion-list>
