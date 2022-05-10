@@ -107,9 +107,11 @@ export default defineComponent({
     };
   },
   methods: {
+// el metodo register es un boton que permite el redireccionamiento del usuario a la pagina de register.
     Register() {
       router.push("/Register");
     },
+//el metodo home redirecciona al usuario a la pantalla principal
     home() {
       router.push("/Home");
     },
