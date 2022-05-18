@@ -5,6 +5,8 @@ import RegisterPage from '../views/Register.vue'
 import LoginPage from '../views/Login.vue'
 import ProfilePage from '../views/Perfil.vue'
 import JakePage from '../views/Jake.vue'
+import EntrevistaPage from '../views/Entrevista.vue'
+import ProfileCompanyPage from '../views/profile_Company.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -36,6 +38,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'JACK',
     component: JakePage
   },
+  {
+    path: '/entrevista',
+    name: 'ENTREVISTA',
+    component: EntrevistaPage
+  },
+  {
+    path: '/profile_company',
+    name: 'PROFILE_COMPANY',
+    component: ProfileCompanyPage
+  }
 
 
 ]

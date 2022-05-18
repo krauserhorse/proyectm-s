@@ -3,7 +3,7 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>M-S</ion-title>
-          <ion-buttons slot="start">
+            <ion-buttons slot="start">
           <ion-back-button default-href="/"></ion-back-button>
         </ion-buttons>
       </ion-toolbar>
@@ -18,10 +18,15 @@
                 <ion-card-title>
                   <ion-label>
                     <h2>Perfil empresarial</h2>
-                    <h3>NIT: {{ nit }}</h3>
-                    <h4>Direccion: {{ direccion }}</h4>
-                    <h5>Sector economico: {{ sector }}</h5>
-                    <h6>Nombre de la empresa: {{ usuario }}</h6>
+                    <h2>NIT: {{ nit }}</h2>
+                    <h2>Direccion: {{ direccion }}</h2>
+                    <h2>Sector economico: {{ sector }}</h2>
+                    <h2>Nombre de la empresa: {{ usuario }}</h2>
+                    <h2>Sector: {{ p1 }}</h2>
+                    <h2>Número de computadores de la empresa: {{ p2 }}</h2>
+                    <h2>{{ p3 }}, posee formatos estandar de procesos administrativos.</h2>
+                    <h2>{{ p4 }} clientes, son necesarios para suplir los gastos empresariales</h2>
+                    <h2>{{ p5 }} proveedores suplen su empresa</h2>
                   </ion-label>
                 </ion-card-title>
               </ion-card-header>
@@ -29,7 +34,6 @@
                 <ion-list>
                   <ion-button expand="block" @click="mostrar">analizar</ion-button>
                   <ion-button expand="block" @click="entrevistar">Entrevista</ion-button>
-                  <ion-button expand="block" @click="company">Avanzado</ion-button>
                 </ion-list>
               </ion-card-content>
             </ion-card>
@@ -66,7 +70,7 @@ import router from "@/router";
 import app from "../dbfirebase/initFirebase";
 import { getFirestore, doc, getDoc } from "firebase/firestore/lite";
 export default defineComponent({
-    name: "ProfilePage",
+    name: "ProfileCompanyPage",
     components: {
         IonContent,
         IonHeader,
@@ -92,6 +96,11 @@ export default defineComponent({
         direccion: "",
         sector: "",
         sesion: "",
+        p1: "",
+        p2: "",
+        p3: "",
+        p4: "",
+        p5: "",
         };
     },
     methods:{
@@ -114,14 +123,22 @@ export default defineComponent({
           } else {
             console.log("No such document!");
           }
-        //console.log(document.cookie);
+        const docRef1 = doc(db, "datos", aux2);
+        const docSnap1 = await getDoc(docRef1);
+        if (docSnap1.exists()) {
+          this.p1 = docSnap1.data().sector;
+          this.p2 = docSnap1.data().número_de_computadores_de_la_empresa;
+          this.p3 = docSnap1.data().formatos_estandar;
+          this.p4 = docSnap1.data().Numero_clientes;
+          this.p5 = docSnap1.data().proveedor;
+          console.log(docSnap1.data());
+        } else {
+          console.log("No such document!");
+        }
 
       },
       entrevistar(){
         router.push("/entrevista");
-      },
-      company(){
-        router.push("/profile_company");
       },
     }
 }); 
