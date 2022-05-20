@@ -27,6 +27,7 @@
                     <h2>{{ p3 }}, posee formatos estandar de procesos administrativos.</h2>
                     <h2>{{ p4 }} clientes, son necesarios para suplir los gastos empresariales</h2>
                     <h2>{{ p5 }} proveedores suplen su empresa</h2>
+                    <img src="../images/estonoesunaimagen.png">
                   </ion-label>
                 </ion-card-title>
               </ion-card-header>
@@ -101,6 +102,7 @@ export default defineComponent({
         p3: "",
         p4: "",
         p5: "",
+        img: "",
         };
     },
     methods:{
@@ -135,7 +137,7 @@ export default defineComponent({
         } else {
           console.log("No such document!");
         }
-
+        this.img = "../images/estonoesunaimagen.png";
       },
       entrevistar(){
         router.push("/entrevista");
