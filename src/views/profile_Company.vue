@@ -63,6 +63,7 @@ import {
   IonRow,
   IonGrid,
   IonBackButton,
+  
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 //import AccountInfo from "../views/Login.vue";
@@ -89,6 +90,7 @@ export default defineComponent({
         IonRow,
         IonGrid,
         IonBackButton,
+      
       },        
     data() {
         return {

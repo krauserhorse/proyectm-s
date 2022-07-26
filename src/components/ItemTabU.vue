@@ -3,8 +3,8 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>M-S</ion-title>
-          <ion-buttons slot="start">
-          <ion-back-button default-href="/"></ion-back-button>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/profile"></ion-back-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
@@ -16,18 +16,11 @@
             <ion-card>
               <ion-card-header>
                 <ion-card-title>
-                  <ion-label>
-                    <h2>Perfil empresarial</h2>
-                    <h3>NIT: {{ nit }}</h3>
-                    <h4>Direccion: {{ direccion }}</h4>
-                    <h5>Sector economico: {{ sector }}</h5>
-                    <h6>Nombre de la empresa: {{ usuario }}</h6>
-                  </ion-label>
+                      <img src="../images/jake-bacon.gif">
                 </ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-list>
-                  <ion-button expand="block" @click="mostrar">analizar</ion-button>
                 </ion-list>
               </ion-card-content>
             </ion-card>
@@ -47,16 +40,18 @@ import {
   IonToolbar,
   IonLabel,
   IonCardTitle,
-  IonButton,
-  IonList,
   IonCardHeader,
+  IonItem,
+  IonList,
+  IonButton,
   IonCardContent,
   IonCard,
   IonCol,
   IonRow,
   IonGrid,
+  IonInput,
   IonBackButton,
- 
+  IonImg
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 //import AccountInfo from "../views/Login.vue";
@@ -65,25 +60,22 @@ import router from "@/router";
 import app from "../dbfirebase/initFirebase";
 import { getFirestore, doc, getDoc } from "firebase/firestore/lite";
 export default defineComponent({
-    name: "ProfilePage",
+    name: "JakePage",
     components: {
-        IonContent,
-        IonHeader,
-        IonPage,
-        IonTitle,
-        IonToolbar,
-        IonLabel,
-        IonCardTitle,
-        IonButton,
-        IonList,
-        IonCardHeader,
-        IonCardContent,
-        IonCard,
-        IonCol,
-        IonRow,
-        IonGrid,
-        IonBackButton,
-        
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCardTitle,
+  IonCardHeader,
+  IonList,
+  IonCardContent,
+  IonCard,
+  IonCol,
+  IonRow,
+  IonGrid,
+  IonBackButton,
       },        
     data() {
         return {
@@ -116,6 +108,9 @@ export default defineComponent({
           }
         //console.log(document.cookie);
 
+      },
+      entrevistar(){
+        router.push("/entrevista");
       },
     }
 }); 

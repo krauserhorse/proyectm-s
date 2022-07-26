@@ -129,7 +129,7 @@ export default defineComponent({
           router.push("/profile");
 
         } else {
-          this.passIncorrect = "Harder daddy";
+          this.passIncorrect = "Contraseña incorrecta";
         }
           document.cookie = this.nit;
       } else {

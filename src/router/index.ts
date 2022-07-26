@@ -3,10 +3,14 @@ import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../views/HomePage.vue'
 import RegisterPage from '../views/Register.vue'
 import LoginPage from '../views/Login.vue'
-import ProfilePage from '../views/Perfil.vue'
 import JakePage from '../views/Jake.vue'
+import ItemTabA from '../components/ItemTabA.vue'
+import { IonTabs } from '@ionic/vue';
 import EntrevistaPage from '../views/Entrevista.vue'
 import ProfileCompanyPage from '../views/profile_Company.vue'
+import ProfilePage from '../views/Perfil.vue'
+
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -29,26 +33,42 @@ const routes: Array<RouteRecordRaw> = [
     component: LoginPage
   },
   {
-    path: '/profile',
+    path: '/tabs/',
     name: 'PROFILE',
-    component: ProfilePage
+    component: ItemTabA
   },
   {
-    path: '/jake',
-    name: 'JACK',
-    component: JakePage
+    path: '/tabs/',
+    component: IonTabs,
+    children: [
+      {
+        path: '',
+        redirect: '/tabs/tab1',
+      },
+      {
+        path: 'tab1',
+        component: ProfilePage,
+      },
+      {
+        path: 'tab2',
+        component: EntrevistaPage,
+      },
+      {
+        path: 'tab3',
+        component: ProfileCompanyPage,
+      },
+      {
+        path: 'tab4',
+        component: JakePage,
+      },
+      
+    ],
   },
   {
-    path: '/entrevista',
-    name: 'ENTREVISTA',
-    component: EntrevistaPage
-  },
-  {
-    path: '/profile_company',
-    name: 'PROFILE_COMPANY',
-    component: ProfileCompanyPage
+    path: '/tabs/',
+    redirect: '/tabs/tab1',
+    
   }
-
 
 ]
 
