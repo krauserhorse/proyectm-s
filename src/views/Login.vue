@@ -126,7 +126,7 @@ export default defineComponent({
         if (comparar == contraseña.contaseña) {
           //enviar nit a perfil.vue
           this.sesion = this.nit;
-          router.push("/profile");
+          router.push("/tabs/");
 
         } else {
           this.passIncorrect = "Contraseña incorrecta";
